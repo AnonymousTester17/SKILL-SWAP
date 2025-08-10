@@ -1,0 +1,137 @@
+:root {
+  --cyan: #3bb4a1;
+  --light-grey: #6d6e70;
+  --grey: #2d2d2d;
+  --yellow: #fbf1a4;
+  --dark-cyan: #013e38;
+  --red: #f56664;
+  --basefont: "Oswald", sans-serif;
+  --secfont: "Montserrat", sans-serif;
+}
+
+h3 {
+  font-family: var(--secfont);
+  margin: 5px 0;
+  font-size: 0.5rem;
+}
+
+h6 {
+  font-family: var(--secfont);
+  font-size: 0.8rem !important;
+  margin: 5px 0;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: var(--secfont);
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 0 5px;
+  height: auto; /* Limits the bio to roughly 3 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items to the top */
+  align-items: center;
+  font-family: var(--secfont);
+  background-color: #00000050;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.35);
+  color: #b3c2cd;
+  position: relative;
+  width: 200px; /* Further reduced width */
+  height: 320px; /* Further reduced height */
+  max-width: 100%;
+  text-align: center;
+  margin: 1rem;
+  overflow: hidden;
+}
+
+.card-container img {
+  border: 1px solid #fbf1a4;
+  border-radius: 50%;
+  padding: 4px;
+  height: 60px;
+  width: 60px;
+  margin-top: 0.5rem;
+}
+
+.prof-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+
+button.primary {
+  margin: 0.2rem;
+  background-color: #3bb4a1;
+  border: 1px solid #3bb4a1;
+  border-radius: 3px;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  transition: 0.3s ease-in-out;
+  font-size: 0.7rem;
+}
+
+button.primary.ghost {
+  margin: 0.2rem;
+  background-color: transparent;
+  color: #3bb4a1;
+  transition: 0.3s ease-in-out;
+}
+
+button.primary:hover {
+  background-color: #fff;
+  color: #3bb4a1;
+}
+
+button.primary.ghost:hover {
+  background-color: #ffffff27;
+}
+
+.profskills {
+  background-color: rgba(48, 88, 100, 0.284);
+  padding: 0.5rem 1rem;
+  text-align: left;
+  width: 100%;
+  height: 40%; /* Set height to 40% of the parent */
+  position: absolute;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.profskill-boxes {
+  margin-top: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profskill-box {
+  text-align: center;
+  background-color: #809c5c;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.4rem;
+  margin-top: 0.4rem;
+  border-radius: 5px;
+  min-width: 2.5rem;
+  font-size: 10px;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    width: 40vw;
+    height: auto;
+  }
+}

@@ -1,0 +1,109 @@
+:root {
+  --cyan: #3bb4a1;
+  --light-grey: #6d6e70;
+  --grey: #2d2d2d;
+  --yellow: #fbf1a4;
+  --dark-cyan: #013e38;
+  --red: #f56664;
+  --basefont: "Oswald", sans-serif;
+  --secfont: "Montserrat", sans-serif;
+}
+
+.discover-page {
+  background-color: var(--grey);
+  min-height: 100vh;
+  color: white;
+}
+
+.content-container {
+  display: flex;
+  margin-left: 0; /* Adjust based on sidebar width */
+}
+
+.nav-bar {
+  background-color: #013e38;
+  height: 100vh;
+  width: 20vw;
+  padding: 20px;
+  position: relative;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  z-index: 1;
+}
+
+.nav-link {
+  font-family: var(--secfont);
+  text-decoration: none;
+  padding: 15px 20px;
+  margin: 10px 0;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  background-color: #ffffff27;
+  color: var(--cyan) !important;
+}
+
+.nav-icon {
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.heading-container {
+  flex: 1;
+  padding: 20px;
+  max-width: 100%;
+}
+
+.profile-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start; /* Changed to flex-start */
+}
+
+.discover-heading {
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--yellow);
+  margin-bottom: 1rem;
+  font-size: 2rem; /* Reduced font size */
+}
+
+.no-users-message {
+  color: var(--yellow);
+  font-size: 1.5rem;
+}
+
+h2.discover-heading {
+  font-family: var(--secfont);
+  font-size: 1.8rem; /* Slightly smaller for subheadings */
+}
+
+@media (max-width: 768px) {
+  .nav-bar {
+    display: none;
+  }
+
+  .content-container {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heading-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .profile-cards {
+    justify-content: center;
+  }
+}
