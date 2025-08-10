@@ -140,6 +140,7 @@ export const skills = [
   "Video Editing",
   "Vue",
   "WebAssembly",
+  "Web Development",
   "WebRTC",
   "WebSockets",
   "Webpack",

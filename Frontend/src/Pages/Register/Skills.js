@@ -3,6 +3,8 @@ export const skills = [
   "Java",
   "C++",
   "C#",
+  "Machine Learning",
+  "Web Development",
   "JavaScript",
   "HTML",
   "CSS",
