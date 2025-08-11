@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://skill-swap-frontend-y5p3.onrender.com",
+    origin: ["https://skill-swap-frontend-y5p3.onrender.com","http://localhost:5173"],
     credentials: true,
   })
 );
