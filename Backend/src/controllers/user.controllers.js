@@ -283,7 +283,7 @@ export const registerUser = async (req, res) => {
 
   const jwtToken = generateJWTToken_username(newUser);
   const expiryDate = new Date(Date.now() + 1 * 60 * 60 * 1000);
-  res.cookie("accessToken", jwtToken, { httpOnly: true, expires: expiryDate, secure: false });
+  res.cookie("accessToken", jwtToken, { httpOnly: true, expires: expiryDate, secure: true });
   res.clearCookie("accessTokenRegistration");
   return res.status(200).json(new ApiResponse(200, newUser, "NewUser registered successfully"));
 };

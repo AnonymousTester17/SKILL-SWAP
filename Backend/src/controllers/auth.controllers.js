@@ -41,7 +41,7 @@ export const handleGoogleLoginCallback = asyncHandler(async (req, res) => {
   if (existingUser) {
     const jwtToken = generateJWTToken_username(existingUser);
     const expiryDate = new Date(Date.now() + 1 * 60 * 60 * 1000);
-    res.cookie("accessToken", jwtToken, { httpOnly: true, expires: expiryDate, secure: false });
+    res.cookie("accessToken", jwtToken, { httpOnly: true, expires: expiryDate, secure: true });
     return res.redirect(`https://skill-swap-frontend-y5p3.onrender.com/discover`);
   }
 
@@ -56,7 +56,7 @@ export const handleGoogleLoginCallback = asyncHandler(async (req, res) => {
   }
   const jwtToken = generateJWTToken_email(unregisteredUser);
   const expiryDate = new Date(Date.now() + 0.5 * 60 * 60 * 1000);
-  res.cookie("accessTokenRegistration", jwtToken, { httpOnly: true, expires: expiryDate, secure: false });
+  res.cookie("accessTokenRegistration", jwtToken, { httpOnly: true, expires: expiryDate, secure: true });
   return res.redirect("https://skill-swap-frontend-y5p3.onrender.com/register");
 });
 
