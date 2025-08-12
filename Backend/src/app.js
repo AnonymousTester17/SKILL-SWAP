@@ -2,6 +2,11 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import passport from "passport";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 // server.js or app.js
@@ -46,5 +51,17 @@ app.use("/message", messageRouter);
 app.use("/request", requestRouter);
 app.use("/report", reportRouter);
 app.use("/rating", ratingRouter);
+
+// ---------- DEPLOYMENT CONFIGURATION ----------
+
+app.use(express.static(path.join(__dirname, "../../Frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../../Frontend/dist/index.html"));
+});
+
+// ----------------------------------------------
+
+
 
 export { app };
