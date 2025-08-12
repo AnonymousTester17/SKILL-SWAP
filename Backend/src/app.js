@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import passport from "passport";
 
 const app = express();
+// server.js or app.js
+app.set('trust proxy', 1);
 
 app.use(
   cors({
