@@ -54,10 +54,11 @@ app.use("/rating", ratingRouter);
 
 // ---------- DEPLOYMENT CONFIGURATION ----------
 
-app.use(express.static(path.join(__dirname, '..', 'public')));
+const publicFolderPath = path.join(process.cwd(), 'public');
+app.use(express.static(publicFolderPath));
 
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
+    res.sendFile(path.join(publicFolderPath, 'index.html'));
 });
 // ----------------------------------------------
 
