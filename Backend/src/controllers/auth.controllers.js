@@ -28,7 +28,7 @@ export const googleAuthHandler = passport.authenticate("google", {
 });
 
 export const googleAuthCallback = passport.authenticate("google", {
-  failureRedirect: "https://skill-swap-frontend-y5p3.onrender.com/login",
+  failureRedirect: "/login", // More robust
   session: false,
 });
 
@@ -41,8 +41,13 @@ export const handleGoogleLoginCallback = asyncHandler(async (req, res) => {
   if (existingUser) {
     const jwtToken = generateJWTToken_username(existingUser);
     const expiryDate = new Date(Date.now() + 1 * 60 * 60 * 1000);
-    res.cookie("accessToken", jwtToken, { httpOnly: true, expires: expiryDate, secure: true });
-    return res.redirect(`https://skill-swap-frontend-y5p3.onrender.com/discover`);
+    res.cookie("accessToken", jwtToken, {
+      httpOnly: true,
+      expires: expiryDate,
+      secure: process.env.NODE_ENV === "production", // Only secure in production
+      sameSite: "Strict" // Adds protection against cross-site request forgery
+    });
+    return res.redirect("/discover");
   }
 
   let unregisteredUser = await UnRegisteredUser.findOne({ email: req.user._json.email });
@@ -56,8 +61,13 @@ export const handleGoogleLoginCallback = asyncHandler(async (req, res) => {
   }
   const jwtToken = generateJWTToken_email(unregisteredUser);
   const expiryDate = new Date(Date.now() + 0.5 * 60 * 60 * 1000);
-  res.cookie("accessTokenRegistration", jwtToken, { httpOnly: true, expires: expiryDate, secure: true });
-  return res.redirect("https://skill-swap-frontend-y5p3.onrender.com/register");
+  res.cookie("accessTokenRegistration", jwtToken, {
+  httpOnly: true,
+  expires: expiryDate,
+  secure: process.env.NODE_ENV === "production", // Only secure in production
+  sameSite: "Strict" // Adds protection against cross-site request forgery
+});
+  return res.redirect("/register");
 });
 
 export const handleLogout = (req, res) => {
