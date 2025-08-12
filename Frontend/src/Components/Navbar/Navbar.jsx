@@ -20,7 +20,7 @@ const UserProfileDropdown = () => {
     setUser(null);
     try {
       const response = await axios.get("/auth/logout");
-      window.location.href = "https://skill-swap-frontend-y5p3.onrender.com/login";
+      window.location.href = "/login";
     } catch (error) {
       console.log(error);
       if (error?.response?.data?.message) {

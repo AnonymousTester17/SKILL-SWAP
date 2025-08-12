@@ -14,7 +14,7 @@ app.set('trust proxy', 1);
 
 app.use(
   cors({
-    origin: "https://skill-swap-frontend-y5p3.onrender.com",
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
   })
 );
@@ -25,7 +25,7 @@ app.use(express.static("public")); // to use static public folder
 app.use(cookieParser()); // to enable CRUD operation on browser cookies
 
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://skill-swap-frontend-y5p3.onrender.com");
+  res.setHeader("Access-Control-Allow-Origin", process.env.CORS_ORIGIN);
   res.setHeader("Access-Control-Allow-Credentials", "true");
   // Add other CORS headers as needed
   next();
@@ -54,12 +54,11 @@ app.use("/rating", ratingRouter);
 
 // ---------- DEPLOYMENT CONFIGURATION ----------
 
-app.use(express.static(path.join(__dirname, "../../Frontend/dist")));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../../Frontend/dist/index.html"));
+    res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
 });
-
 // ----------------------------------------------
 
 
